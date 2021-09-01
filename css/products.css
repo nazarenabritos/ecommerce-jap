@@ -1,0 +1,13 @@
+.list-group {
+    padding-left: 200px;
+    padding-bottom: 20px;
+}
+
+[class="py-2 d-none d-md-inline-block"]:link, [class="py-2 d-none d-md-inline-block"]:visited {
+    color: white;
+}
+
+[class="py-2 d-none d-md-inline-block"]:hover, [class="py-2 d-none d-md-inline-block"]:active {
+    color: white;
+}
+
