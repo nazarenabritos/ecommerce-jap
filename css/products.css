@@ -1,6 +1,7 @@
 .list-group {
-    padding-left: 200px;
+    padding-left: 20%;
     padding-bottom: 20px;
+    padding-right: 20%;
 }
 
 [class="py-2 d-none d-md-inline-block"]:link, [class="py-2 d-none d-md-inline-block"]:visited {
@@ -11,3 +12,8 @@
     color: white;
 }
 
+.filter-container{
+    margin-left: 60%;
+    margin-bottom: 10px;
+    margin-right: 21%;
+}

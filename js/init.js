@@ -47,4 +47,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     if(!location.href.endsWith("login.html") && !sessionStorage.getItem("logueado")){
           window.location.href = "login.html";
       };
+    document.getElementById("usuarioIng").innerHTML = sessionStorage.getItem("usuario");
 });
