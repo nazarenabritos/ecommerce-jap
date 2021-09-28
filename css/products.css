@@ -17,3 +17,49 @@
     margin-bottom: 10px;
     margin-right: 21%;
 }
+
+.checked {
+    color: orange;
+}
+
+.small{
+    color: gray;
+    font-size: smaller;
+}
+
+
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+  }
+  
+  #form p {
+    text-align: center;
+  }
+  
+  #form label {
+    font-size: 40px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  p>label {
+    color: grey;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  p>label:hover,
+  p>label:hover ~ label {
+    color: orange;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
