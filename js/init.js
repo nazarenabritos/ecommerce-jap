@@ -48,4 +48,10 @@ document.addEventListener("DOMContentLoaded", function(e){
           window.location.href = "login.html";
       };
     document.getElementById("usuarioIng").innerHTML = sessionStorage.getItem("usuario");
+
+    document.getElementById("cerrar").addEventListener("click", function(evento){
+      evento.preventDefault();
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    });
 });

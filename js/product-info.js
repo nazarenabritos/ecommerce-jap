@@ -1,4 +1,5 @@
 var producto = [];
+var productoRel = [];
 
 function showImages(array){
 
@@ -59,11 +60,16 @@ function showComments(comments){
     
 };
 
+function relacionado(){
+    
+};
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
+        
         if (resultObj.status === "ok"){
             producto = resultObj.data;
 
@@ -83,6 +89,27 @@ document.addEventListener("DOMContentLoaded", function(e){
             
 
         };
+        getJSONData(PRODUCTS_URL).then(function(resultO){
+            let productoS = resultO.data;
+            productoRel = producto.relatedProducts;
+            let contenido = "";
+            productoRel.forEach(i => {
+                contenido += `
+                <a href="#" class="enlaceRel">
+                    <div class="productRel">
+                        <img class="imgRel" src="${productoS[i].imgSrc}" alt="${productoS[i].name}">
+                        <hr>
+                        <div class="descripRel">
+                            <h5>${productoS[i].name}</h5>
+                            <h6>${productoS[i].currency}${productoS[i].cost}</h6>
+                        </div>
+                    </div>
+                </a>`;
+            });
+
+            document.getElementById("prodRelacionados").innerHTML = contenido;
+
+        });
 
     });
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(comentarios){
