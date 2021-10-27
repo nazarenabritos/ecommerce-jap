@@ -1,0 +1,53 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+}
+
+body {
+    font-family: 'Raleway', serif !important;
+}
+
+[class="py-2 d-none d-md-inline-block"]:link, [class="py-2 d-none d-md-inline-block"]:visited {
+    color: white;
+}
+
+[class="py-2 d-none d-md-inline-block"]:hover, [class="py-2 d-none d-md-inline-block"]:active {
+    color: white;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+ul {
+    border: 1px solid rgb(189, 188, 188);
+    border-radius: 4px;
+    padding: 12px 20px;
+    
+}
+
+li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    border: 1px solid rgb(189, 188, 188);
+    border-radius: 4px;
+}
