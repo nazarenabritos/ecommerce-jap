@@ -1,40 +1,39 @@
 var producto = [];
 var productoRel = [];
 
-function showImages(array){
+function showImages(array) {
 
     let htmlContentToAppend = "";
-
-    for(let i = 0; i < array.length; i++){
-        let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `;
-
-        document.getElementById("productImages").innerHTML = htmlContentToAppend;
-    };
+    var i = 0;
+    array.forEach(imageSrc=>{
+        if (i==0){
+            htmlContentToAppend+= "<div class='carousel-item active'>  <img class='img-thumbnail dblock w-100'  src=" +imageSrc+" alt='"+imageSrc+ "' width=100 height=300> </div>";
+            } else{
+            htmlContentToAppend+= "<div class='carousel-item '>  <img class='img-thumbnail dblock w-100'  src=" +imageSrc+" alt='"+imageSrc+ "' width=100 height=300> </div>";
+        }
+        i++;
+    });
+    document.getElementById("productImages").innerHTML = htmlContentToAppend;
+    
+        
+    
 };
 
-function showComments(comments){
+function showComments(comments) {
     let htmlComments = "";
-    
 
-    for(let i = 0; i < comments.length; i++){
+
+    for (let i = 0; i < comments.length; i++) {
         let score = comments[i].score;
         let starsHTML = "";
 
-        for(let i = 0; i < score; i++){
+        for (let i = 0; i < score; i++) {
             starsHTML += `
             <span class="fa fa-star checked"></span>`
-            
+
         }
 
-        for(let j = 0; j < 5 - score; j++){
+        for (let j = 0; j < 5 - score; j++) {
             starsHTML += `
             <span class="fa fa-star"></span>`
         }
@@ -43,37 +42,37 @@ function showComments(comments){
         <hr>
         <div id="comment">
             <div class="stars">
-                <h6>Puntuación: `+starsHTML+`</h6>
+                <h6>Puntuación: `+ starsHTML + `</h6>
             </div>
-            <h5>`+comments[i].description+`</h5>
+            <h5>`+ comments[i].description + `</h5>
         </div>
         <div class="small">
-            <p>Usuario: `+comments[i].user+`</p>
-            <p>`+comments[i].dateTime+`</p>
+            <p>Usuario: `+ comments[i].user + `</p>
+            <p>`+ comments[i].dateTime + `</p>
         </div>`;
 
-        
+
 
         document.getElementById("allComments").innerHTML = htmlComments;
-        
+
     };
-    
+
 };
 
-function relacionado(){
-    
+function relacionado() {
+
 };
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
-        
-        if (resultObj.status === "ok"){
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+
+        if (resultObj.status === "ok") {
             producto = resultObj.data;
 
-            let productNameHTML  = document.getElementById("productName");
+            let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productPriceHTML = document.getElementById("productCost");
             let productCriteriaHTML = document.getElementById("productCriteria");
@@ -86,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             productSoldCountHTML.innerHTML = producto.soldCount;
 
             showImages(producto.images);
-            
+
 
         };
-        getJSONData(PRODUCTS_URL).then(function(resultO){
+        getJSONData(PRODUCTS_URL).then(function (resultO) {
             let productoS = resultO.data;
             productoRel = producto.relatedProducts;
             let contenido = "";
@@ -112,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         });
 
     });
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(comentarios){
-        if (comentarios.status === "ok"){
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (comentarios) {
+        if (comentarios.status === "ok") {
             showComments(comentarios.data);
         };
 

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     document.getElementById("cerrar").addEventListener("click", function(evento){
       evento.preventDefault();
-      sessionStorage.clear();
+      sessionStorage.removeItem("logueado");
       window.location.href = "login.html";
     });
 });

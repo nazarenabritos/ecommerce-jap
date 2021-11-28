@@ -1,8 +1,8 @@
 html, body{
     height: 100%;
-  }
+}
 
-  body {
+body {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -10,27 +10,33 @@ html, body{
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #f5f5f5;
-  }
+}
 
-  .signin {
+.signin {
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: auto;
-  }
+}
 
-  #contenedor-form {
+#contenedor-form {
     margin: auto;
-  }
+}
 
-  #boton {
+#boton {
     background-color: seagreen;
     border-radius: 4px;
     border: none;
     padding: 8px 20px;
     margin: 10px 40px;
-  }
+}
 
-  #form {
-    margin: 40px 10px 40px 80px;
-  }
+#form {
+  margin: 40px 10px 40px 80px;
+}
+
+input {
+  border: 1px solid rgb(189, 188, 188);
+  border-radius: 4px;
+  margin-bottom: 5px;
+}

@@ -24,7 +24,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="usuarioIng" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="usuarioIng" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu" aria-labelledby="usuarioIng">
           <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
@@ -34,6 +35,7 @@
       </div>
     </div>
   </nav>
+
   <div class="container">
     <div class="text-center p-4">
       <h2>Mi carrito de compras</h2>
@@ -55,7 +57,7 @@
       </table>
     </div>
     <hr>
-    <form id="formBuy">
+    <form id="formBuy" method="get">
       <div>
         <h4>Tipo de envio</h4>
         <input type="radio" id="premium" name="envio" checked required>
@@ -71,8 +73,18 @@
       <div>
         <h4>Dirección de envio</h4>
         <label>Calle y número</label>
-        <input type="text" name="calle" required>
-        <input type="number" name="numero" style="width: 50px;" required>
+        <input type="text" name="calle" pattern="[A-Za-z]{0,}" title="No puede contener numeros ni simbolos" required>
+        <input type="number" name="numero" style="width: 50px;" min="1" required>
+      </div>
+      <hr>
+      <div>
+        <h4>Forma de pago</h4>
+        <label id="selecFormPago" style="color:red">No esta seleccionado</label>
+        <small id="errores" style="color:red"></small>
+        
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#requiredModal">
+          Seleccionar
+        </button>
       </div>
       <hr>
       <div>
@@ -97,12 +109,69 @@
           </li>
         </ul>
       </div>
-      <button>Finalizar compra</button>
-
-
+      <button type="submit" form="formBuy" class="btn btn-success">Finalizar compra</button>
     </form>
+    <br>
+
+    <div class="modal fade" id="requiredModal" tabindex="-1" aria-labelledby="requiredModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="requiredModalLabel">Forma de pago</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="custom-control custom-radio col-md-6">
+                  <input type="radio" id="tarjeta" name="formDePago" class="custom-control-input" form="formBuy"
+                    required value="tarjeta">
+                  <label for="tarjeta" class="custom-control-label">Tarjeta de credito</label>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="custom-control col-md-6">
+                  <label for="numeroTarjeta">Numero de targeta</label>
+                  <input type="text" name="numeroTarjeta" id="numeroTarjeta" class="form-control" form="formBuy" required>
+                  <div id="errorNumTarjeta" class="invalid-feedback"></div>
+                </div>
+                <div class="custom-control col-md-4">
+                  <label for="codTarjeta">Codigo de seg.</label>
+                  <input type="number" name="codTarjeta" id="codTarjeta" min="0" class="form-control" form="formBuy" required>
+                  <div id="errorCodTarjeta" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="custom-control custom-radio col-md-6">
+                  <input type="radio" id="transferencia" name="formDePago" class="custom-control-input" form="formBuy"
+                    required value="transferencia">
+                  <label for="transferencia" class="custom-control-label">Transferencia Bancaria</label>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="custom-control col-md-6">
+                  <label for="cuenta">Numero de cuenta</label>
+                  <input type="text" name="cuenta" id="cuentaB" class="form-control" form="formBuy" required>
+                  <div id="errorNumCuenta" class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="guardarModal" class="btn btn-secondary" onclick="validacionModal()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

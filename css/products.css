@@ -2,12 +2,6 @@ body {
   font-family: 'Raleway', serif !important;
 }
 
-.list-group {
-    padding-left: 20%;
-    padding-bottom: 20px;
-    padding-right: 20%;
-}
-
 [class="py-2 d-none d-md-inline-block"]:link, [class="py-2 d-none d-md-inline-block"]:visited {
     color: white;
 }
@@ -25,12 +19,6 @@ body {
 .checked {
     color: orange;
 }
-
-.small{
-    color: gray;
-    font-size: smaller;
-}
-
 
 #form {
     width: 250px;

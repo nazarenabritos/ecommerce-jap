@@ -46,22 +46,25 @@ function showProductsList(){
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(prod.cost) <= maxPrice))){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + prod.imgSrc + `" alt="` + prod.description + `" class="img-thumbnail">
+            <div class="col-12 col-md-4 card-deck">
+                <a href="product-info.html" class="card mb-4 shadow-sm text-decoration-none">
+                    <div class="align-self-center">
+                        <img src="` + prod.imgSrc + `" alt="` + prod.description + `" class="bd-placeholder-img card-img-top">
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ prod.name +`</h4>
-                            <small class="text-muted">` + prod.soldCount + ` vendidos</small>
+                        
+                    <div class="card-body text-dark">
+                        <div class="card-text">
+                            <h4 class="mb-3">`+ prod.name +`</h4>
+                            <p class="mb-1">` + prod.description + `</p><br>
+                            <h4> ` + prod.currency + ` ` + prod.cost +`</h4>  
                         </div>
-                        <p class="mb-1">` + prod.description + `</p><br>
-                        <h4> ` + prod.currency + ` ` + prod.cost +
-                        `</h4>
                     </div>
-                </div>
-            </a>
+                        
+                    <div class="card-footer">
+                        <small class="text-muted d-flex justify-content-end">` + prod.soldCount + ` vendidos</small>
+                    </div>
+                </a>
+            </div>
             `;
         
         };

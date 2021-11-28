@@ -11,29 +11,12 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/my-profile.css" rel="stylesheet">
+  <!-- <link href="css/dropzone.css" rel="stylesheet"> -->
 </head>
 
-<body>
+<body onload="recarga()">
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
@@ -41,7 +24,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="usuarioIng" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="usuarioIng" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></a>
         <div class="dropdown-menu" aria-labelledby="usuarioIng">
           <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
@@ -51,14 +35,55 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="container">
+    <div class="text-center p-4">
+      <h2>Mi perfil</h2>
     </div>
+    
+    <h3>Nombre: <strong id="nombresHTML">-</strong></h3>
+    <h3>Apellidos: <strong id="apellidosHTML">-</strong></h3>
+    <h3>Edad: <strong id="edadHTML">-</strong></h3>
+    <h3>Correo: <strong id="correoHTML">-</strong></h3>
+    <h3>Tel. de contacto: <strong id="telHTML">-</strong></h3>
+    <button class="btn btn-primary" onclick="document.getElementById('editModal').style.display='block'"
+      id="editbtn">Editar</button>
   </div>
+
+  <div id="editModal" class="modal">
+    <form class="modal-content" action="" method="POST" id="editform">
+      <div class="containerModal">
+        <h1>Registrate</h1>
+        <p>Completa para crearte una cuenta.</p>
+        <hr>
+        <label for="nombresModif">Nombres</label>
+        <input type="text" placeholder="Nombres" id="nombresModif" name="nombresModif" pattern="[A-Za-z]{0,}"
+          title="No puede contener numeros ni simbolos" required>
+        <br>
+        <label for="apellidosModif">Apellidos</label>
+        <input type="text" placeholder="Apellidos" id="apellidosModif" name="apellidosModif" pattern="[A-Za-z]{0,}"
+          title="No puede contener numeros ni simbolos" required>
+        <br>
+        <label for="edadModif">Edad</label>
+        <input type="number" placeholder="Edad" id="edadModif" min="0" name="edadModif" required>
+        <br>
+        <label for="emailModif">Email</label>
+        <input type="text" placeholder="Email" id="emailModif" name="emailModif"
+          pattern="[a-z0-9._%+-]+@[a-z0-9._%+-]{0,}" required>
+        <br>
+        <label for="telModif">Tel. de contacto</label>
+        <input type="tel" placeholder="Telefono" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" id="telModif" name="telModif"
+          title="Tiene que tener 9 numeros" required>
+        <br>
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('editModal').style.display='none'"
+            class="cancelbtn">Cancelar</button>
+          <button type="submit" form="editform" class="savebtn">Guardar cambios</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
